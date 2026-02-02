@@ -61,11 +61,23 @@ If you prefer to set up manually:
    ~/.codex/notify-macos.sh '{}'
    ```
 
-## Publishing tip
+## Uninstallation
 
-When you share screenshots or config snippets publicly, **mask your macOS username**:
-- Prefer `$HOME/.codex/...`
-- Or `/Users/<your-username>/.codex/...`
+To remove the setup:
+
+1. Remove the hook from `~/.codex/config.toml`
+
+2. Delete the script:
+
+   ```bash
+   rm -f ~/.codex/notify-macos.sh
+   ```
+
+3. (Optional) Remove backups created by the setup script:
+
+   ```bash
+   rm -f ~/.codex/notify-macos.sh.bak*
+   ```
 
 ## Contributing
 
