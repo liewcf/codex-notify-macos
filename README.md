@@ -1,0 +1,70 @@
+# codex-notify-macos
+
+A small, copy-pasteable guide to make **OpenAI Codex CLI** play a **completion sound** and show a **macOS notification** using the Codex CLI `notify` hook.
+
+## What's inside
+
+- `setup-codex-notify.sh` — **Auto-setup script** (recommended)
+- `codex-notify-macos.md` — Full step-by-step guide (manual setup + troubleshooting)
+
+## Quick start (Auto-setup)
+
+Run the setup script to automatically configure everything:
+
+```bash
+chmod +x setup-codex-notify.sh
+./setup-codex-notify.sh
+```
+
+This will:
+- Create `~/.codex/notify-macos.sh`
+- Update `~/.codex/config.toml`
+- Offer to send a test notification
+
+## Manual setup
+
+If you prefer to set up manually:
+
+1. Create the script:
+
+   ```bash
+   mkdir -p ~/.codex
+   nano ~/.codex/notify-macos.sh
+   ```
+
+2. Paste the script from `codex-notify-macos.md`, then:
+
+   ```bash
+   chmod +x ~/.codex/notify-macos.sh
+   ```
+
+3. Add to `~/.codex/config.toml`:
+
+   ```toml
+   notify = ["/bin/bash", "/Users/<your-username>/.codex/notify-macos.sh"]
+   ```
+
+   (If `~` expansion works in your setup, `~/.codex/notify-macos.sh` is equivalent.)
+
+4. Test:
+
+   ```bash
+   ~/.codex/notify-macos.sh '{}'
+   ```
+
+## Publishing tip
+
+When you share screenshots or config snippets publicly, **mask your macOS username**:
+- Prefer `$HOME/.codex/...`
+- Or `/Users/<your-username>/.codex/...`
+
+## Contributing
+
+PRs welcome for:
+- more robust payload parsing
+- alternate notification methods
+- Linux equivalents
+
+## License
+
+MIT License — see [LICENSE](LICENSE) file.
