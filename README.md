@@ -5,6 +5,8 @@ A small, copy-pasteable guide to make **OpenAI Codex CLI** play a **completion s
 ## What's inside
 
 - `setup-codex-notify.sh` — **Auto-setup script** (recommended)
+  - Interactive feature selection (sound / notification / both)
+  - Automatic backup of existing scripts
 - `codex-notify-macos.md` — Full step-by-step guide (manual setup + troubleshooting)
 
 ## Quick start (Auto-setup)
@@ -16,10 +18,17 @@ chmod +x setup-codex-notify.sh
 ./setup-codex-notify.sh
 ```
 
-This will:
-- Create `~/.codex/notify-macos.sh`
-- Update `~/.codex/config.toml`
-- Offer to send a test notification
+### What it does
+
+1. **Select features** — choose which notifications to enable:
+   - Sound notification (via `afplay`)
+   - macOS notification banner (via `osascript`)
+
+2. **Backup existing** — backs up your current script before overwriting
+
+3. **Configure** — creates/updates `~/.codex/config.toml`
+
+4. **Test** — optionally sends a test notification
 
 ## Manual setup
 
