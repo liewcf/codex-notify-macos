@@ -18,6 +18,11 @@ chmod +x setup-codex-notify.sh
 ./setup-codex-notify.sh
 ```
 
+### Prereqs
+
+- macOS
+- OpenAI Codex CLI installed and working
+
 ### What it does
 
 1. **Select features** — choose which notifications to enable:
@@ -41,6 +46,8 @@ If you prefer to set up manually:
    nano ~/.codex/notify-macos.sh
    ```
 
+   Use your editor of choice if you prefer.
+
 2. Paste the script from `codex-notify-macos.md`, then:
 
    ```bash
@@ -53,7 +60,7 @@ If you prefer to set up manually:
    notify = ["/bin/bash", "/Users/<your-username>/.codex/notify-macos.sh"]
    ```
 
-   (If `~` expansion works in your setup, `~/.codex/notify-macos.sh` is equivalent.)
+   (If `~` expansion works in your setup, `~/.codex/notify-macos.sh` is equivalent. `$HOME/.codex/notify-macos.sh` is also OK.)
 
 4. Test:
 
@@ -77,6 +84,7 @@ To remove the setup:
 
    ```bash
    rm -f ~/.codex/notify-macos.sh.bak*
+   rm -f ~/.codex/config.toml.backup.*
    ```
 
 ## Contributing

@@ -69,7 +69,11 @@ fi
 ### Notes
 - The `&` runs `afplay` in the background so your hook returns immediately.
 - `>/dev/null 2>&1` hides errors (for example, if a sound file can’t be played).
-- If you’re debugging, you can log `payload` (but avoid dumping sensitive content).
+- If you’re debugging, you can log `payload` (but avoid dumping sensitive content), for example:
+
+  ```bash
+  echo "$(date) $payload" >> /tmp/codex-notify.log
+  ```
 
 ---
 
@@ -88,6 +92,8 @@ Open your Codex config:
 ```bash
 code ~/.codex/config.toml
 ```
+
+If you don’t use VS Code, open it with your editor of choice instead.
 
 Add (or update) this line:
 
@@ -260,4 +266,4 @@ Put it in your `~/.zshrc` if you want it permanently.
 
 ## License
 
-Use any license you like. For a tiny script guide, many people choose MIT.
+MIT License — see [LICENSE](LICENSE) file.
