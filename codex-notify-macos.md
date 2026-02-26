@@ -63,7 +63,7 @@ if command -v afplay >/dev/null 2>&1 && [ -f "$SOUND_FILE" ]; then
 fi
 
 # 2) Show a macOS notification
-/usr/bin/osascript -e "display notification \"$BODY\" with title \"$TITLE\"" >/dev/null 2>&1
+/usr/bin/osascript -e "display notification \"$BODY\" with title \"$TITLE\"" >/dev/null 2>&1 || true
 ```
 
 ### Notes

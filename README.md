@@ -83,7 +83,7 @@ To remove the setup:
 3. (Optional) Remove backups created by the setup script:
 
    ```bash
-   rm -f ~/.codex/notify-macos.sh.bak*
+   rm -f ~/.codex/notify-macos.sh.backup.*
    rm -f ~/.codex/config.toml.backup.*
    ```
 

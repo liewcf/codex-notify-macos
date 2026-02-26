@@ -100,11 +100,11 @@ fi
 if [[ "$ENABLE_NOTIFICATION" == true ]]; then
     SCRIPT_CONTENT+='
 # Show a macOS notification
-/usr/bin/osascript -e "display notification \"$BODY\" with title \"$TITLE\"" >/dev/null 2>&1
+/usr/bin/osascript -e "display notification \"$BODY\" with title \"$TITLE\"" >/dev/null 2>&1 || true
 '
 fi
 
-echo "$SCRIPT_CONTENT" > "$NOTIFY_SCRIPT"
+printf '%s\n' "$SCRIPT_CONTENT" > "$NOTIFY_SCRIPT"
 chmod +x "$NOTIFY_SCRIPT"
 print_success "Created notify script: $NOTIFY_SCRIPT"
 
@@ -131,7 +131,7 @@ EOF
     print_success "Created new config file: $CONFIG_FILE"
 else
     # Check if notify is already configured
-    if grep -q '^notify[[:space:]]*=' "$CONFIG_FILE" 2>/dev/null; then
+    if grep -q '^[[:space:]]*notify[[:space:]]*=' "$CONFIG_FILE" 2>/dev/null; then
         print_info "Notify hook already configured in $CONFIG_FILE"
         print_info "Current features in $NOTIFY_SCRIPT:"
         # Detect what's enabled in existing script
@@ -161,9 +161,9 @@ else
             cp "$CONFIG_FILE" "${CONFIG_FILE}.backup.$(date +%Y%m%d%H%M%S)"
             # Remove existing notify line and add new one (handle both macOS and Linux sed)
             if [[ "$OSTYPE" == "darwin"* ]]; then
-                sed -i '' '/^notify[[:space:]]*=/d' "$CONFIG_FILE"
+                sed -i '' '/^[[:space:]]*notify[[:space:]]*=/d' "$CONFIG_FILE"
             else
-                sed -i '/^notify[[:space:]]*=/d' "$CONFIG_FILE"
+                sed -i '/^[[:space:]]*notify[[:space:]]*=/d' "$CONFIG_FILE"
             fi
             echo "notify = [\"/bin/bash\", \"$NOTIFY_SCRIPT\"]" >> "$CONFIG_FILE"
             print_success "Updated notify hook in $CONFIG_FILE"
